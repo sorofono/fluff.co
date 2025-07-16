@@ -1,0 +1,103 @@
+<!-- careers.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Careers - Fluff&Co</title>
+
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+    })();
+  </script>
+
+  <style>
+    /* (Style tetap sama seperti asal anda) */
+    /* ... Semua CSS yang anda bagi tadi ... */
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar" role="navigation" aria-label="Primary navigation">
+    <div class="logo">Fluff&Co</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="darkToggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <section class="careers-section" aria-label="Career opportunities at Fluff and Co">
+    <h1>Join Our Team</h1>
+    <p>Fluff&Co is always looking for passionate and talented individuals.</p>
+    <ul class="job-list">
+      <li><strong>Digital Marketing Specialist</strong> – Full-time</li>
+      <li><strong>Content Creator</strong> – Part-time</li>
+      <li><strong>SEO Analyst</strong> – Internship</li>
+    </ul>
+    <p>You can also send your resume and portfolio to <a href="mailto:careers@fluffandco.com" class="mail-link">careers@fluffandco.com</a></p>
+
+    <h2>Apply Now</h2>
+    <form id="careerForm" action="https://formsubmit.co/s241572628@studentmail.unimap.edu.my" method="POST" enctype="multipart/form-data" aria-label="Career application form">
+      <label for="fullname">Full Name <span style="color:red">*</span></label>
+      <input type="text" id="fullname" name="fullname" required />
+
+      <label for="email">Email Address <span style="color:red">*</span></label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="position">Position Applying For <span style="color:red">*</span></label>
+      <select id="position" name="position" required>
+        <option value="" disabled selected>Select a position</option>
+        <option value="Digital Marketing Specialist">Digital Marketing Specialist</option>
+        <option value="Content Creator">Content Creator</option>
+        <option value="SEO Analyst">SEO Analyst</option>
+      </select>
+
+      <label for="message">Why do you want to join Fluff&Co?</label>
+      <textarea id="message" name="message" rows="4" placeholder="Tell us more..."></textarea>
+
+      <label for="resume">Upload Your Resume (PDF only)</label>
+      <input type="file" id="resume" name="resume" accept=".pdf" />
+
+      <!-- Hidden fields for FormSubmit -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Career Application from Fluff&Co">
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Fluff&Co. All rights reserved.</p>
+</footer>
+
+<script>
+  const darkBtn = document.getElementById('darkToggle');
+  darkBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark-mode');
+    const isDark = document.documentElement.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
+
+</body>
+</html>

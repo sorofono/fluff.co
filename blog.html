@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog - Fluff&Co</title>
+  <meta name="description" content="Stay updated with Fluff&Co’s latest articles on digital marketing, SEO, social media trends, and content strategy." />
+  <meta name="author" content="Fluff&Co Team" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-papDIXA/5Vp3Um3qkLtBZrPqAxxzqEjXK1JU7ENAtEtD7URLO2BkQWlVTHHe/0r2XqV5uMfbZg+PaHVY7Ai8EA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme')
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+    })();
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Primary navigation">
+      <div class="logo">Fluff&Co</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html" class="active" aria-current="page">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button id="darkToggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main role="main" aria-label="Blog articles and news" class="content">
+    <!-- Page intro -->
+    <section class="blog-intro fade-in" tabindex="0">
+      <h1>Latest Articles & Insights from Fluff&Co</h1>
+      <p>
+        Dive into the latest trends, strategies, and expert tips in digital marketing, SEO, social media,
+        and content creation. Whether you’re a startup or an established brand, find valuable insights to
+        elevate your marketing game.
+      </p>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search articles..."
+        aria-label="Search articles"
+        autocomplete="off"
+      />
+    </section>
+
+    <!-- Blog posts container -->
+    <section class="blog-section fade-in delay-1" aria-live="polite" aria-relevant="additions removals" aria-atomic="true">
+      <article class="blog-post" tabindex="0">
+        <header>
+          <h2><a href="#" tabindex="-1">How SEO is Changing in 2025</a></h2>
+          <p class="meta">
+            <time datetime="2025-05-12">May 12, 2025</time> &middot; By <strong>Amira H.</strong> &middot; <span class="tag">SEO</span> &middot; <span class="reading-time">6 min read</span>
+          </p>
+        </header>
+        <p>
+          SEO is evolving rapidly with AI-powered search engines and voice assistants taking center stage.
+          Learn how to adapt your strategy with new techniques that prioritize user intent and content quality.
+        </p>
+      </article>
+
+      <article class="blog-post" tabindex="0">
+        <header>
+          <h2><a href="#" tabindex="-1">Top 5 Social Media Trends Shaping 2025</a></h2>
+          <p class="meta">
+            <time datetime="2025-04-25">April 25, 2025</time> &middot; By <strong>Daniel T.</strong> &middot; <span class="tag">Social Media</span> &middot; <span class="reading-time">5 min read</span>
+          </p>
+        </header>
+        <p>
+          Authentic content, micro-influencers, and immersive formats like AR/VR experiences are reshaping social media.
+          Explore the key trends that will define brand engagement this year.
+        </p>
+      </article>
+
+      <article class="blog-post" tabindex="0">
+        <header>
+          <h2><a href="#" tabindex="-1">Content Marketing Tips for Startups</a></h2>
+          <p class="meta">
+            <time datetime="2025-03-30">March 30, 2025</time> &middot; By <strong>Nadia Y.</strong> &middot; <span class="tag">Content Marketing</span> &middot; <span class="reading-time">7 min read</span>
+          </p>
+        </header>
+        <p>
+          Startups can leverage content marketing to boost visibility and build trust. Learn practical tips
+          for creating compelling, budget-friendly content that drives leads and nurtures customers.
+        </p>
+      </article>
+
+      <!-- No results message -->
+      <p id="noResults" style="display:none;" aria-live="assertive" role="alert">
+        Sorry, no articles match your search.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Fluff&Co. All rights reserved.</p>
+  </footer>
+
+  <!-- Dark mode toggle and search filter scripts -->
+  <script>
+    // Dark mode toggle button
+    document.getElementById('darkToggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      localStorage.setItem(
+        'theme',
+        document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light'
+      );
+    });
+
+    // Search filter with no results message
+    const searchInput = document.getElementById('searchInput');
+    const blogPosts = document.querySelectorAll('.blog-post');
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      blogPosts.forEach(post => {
+        const title = post.querySelector('h2').textContent.toLowerCase();
+        const snippet = post.querySelector('p:not(.meta)').textContent.toLowerCase();
+        const isVisible = title.includes(query) || snippet.includes(query);
+
+        post.style.display = isVisible ? '' : 'none';
+        if (isVisible) visibleCount++;
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

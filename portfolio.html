@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Fluff&Co</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme')
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+    })();
+  </script>
+  <style>
+    main.centered {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .portfolio-section {
+      text-align: center;
+    }
+
+    .filter-btns {
+      text-align: center;
+      margin: 2rem auto;
+      position: sticky;
+      top: 70px;
+      background: var(--bg);
+      padding: 1rem 0;
+      z-index: 998;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #eee;
+      color: var(--text-secondary);
+    }
+
+    /* Portfolio item show/hide */
+    .portfolio-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      display: none; /* hidden by default */
+    }
+
+    .portfolio-item.show {
+      opacity: 1;
+      transform: translateY(0);
+      display: block; /* visible when shown */
+    }
+
+    /* Added hidden class for smooth hiding */
+    .hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      display: none !important;
+    }
+
+    /* Filter buttons styling */
+    .filter-btn {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      font-weight: 600;
+      padding: 0.6rem 1.4rem;
+      margin: 0 0.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .filter-btn:hover:not(.active),
+    .filter-btn:focus:not(.active) {
+      background-color: var(--primary);
+      color: #fff;
+      outline: none;
+    }
+
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Sticky filter btns background fix for dark mode */
+    .filter-btns.dark-mode {
+      background: var(--bg-dark);
+      box-shadow: 0 2px 8px rgba(255 255 255 / 0.1);
+    }
+
+    /* Back to top button fix for visibility */
+    #backToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--primary);
+      border: none;
+      color: #fff;
+      padding: 0.8rem 1.1rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    #backToTop:hover,
+    #backToTop:focus {
+      background-color: var(--primary-dark);
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo" onclick="location.href='index.html'">Fluff&Co</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button id="darkToggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="centered">
+    <section class="portfolio-section">
+      <h1>Our Projects</h1>
+      <div class="filter-btns" role="radiogroup">
+        <button class="filter-btn" data-filter="web">Web Design</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="app">App Design</button>
+        <button class="filter-btn" data-filter="leadership">Leadership</button>
+      </div>
+      <div class="portfolio-grid">
+        <!-- Each portfolio item -->
+        <div class="portfolio-item hidden" data-category="web">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Portfolio Website" />
+          <div class="portfolio-info">
+            <h3>Portfolio Website <span class="badge">Featured</span></h3>
+            <p>Responsive & elegant design with smooth animations.</p>
+          </div>
+        </div>
+        <div class="portfolio-item hidden" data-category="branding">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Brand Identity" />
+          <div class="portfolio-info">
+            <h3>Brand Identity</h3>
+            <p>Complete branding package for small businesses including logo, colors & typography.</p>
+          </div>
+        </div>
+        <div class="portfolio-item hidden" data-category="app">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="App Design" />
+          <div class="portfolio-info">
+            <h3>App Design</h3>
+            <p>Innovative user interface focusing on usability and accessibility.</p>
+          </div>
+        </div>
+           <div class="portfolio-item hidden" data-category="leadership">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=400&q=80" alt="Team Project Collaboration" />
+          <div class="portfolio-info">
+            <h3>Team Collaboration</h3>
+            <p>Agile teamwork in delivering high-quality results on time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2025 Fluff&Co. All rights reserved.</footer>
+
+  <button id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    // Dark mode toggle button
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Nav links toggle fix
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+        }
+      });
+    });
+
+    // Portfolio filter buttons logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active to clicked button
+        btn.classList.add('active');
+
+        // Get selected category
+        const cat = btn.getAttribute('data-filter');
+
+        // Show/hide portfolio items based on category
+        items.forEach(i => {
+          const match = cat === 'all' || i.getAttribute('data-category') === cat;
+          if (match) {
+            i.classList.add('show');
+            i.classList.remove('hidden');
+          } else {
+            i.classList.remove('show');
+            i.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Intersection Observer for reveal animation on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          entry.target.classList.remove('hidden');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+
+    // Back to top button show/hide and scroll behavior
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

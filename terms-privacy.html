@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terma & Privasi - Fluff&Co</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --accent-color: #ffd700;
+      --background: #f5f7fa;
+      --text-color: #2c3e50;
+      --card-bg: #ffffff;
+      --border-color: #e1e4e8;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark-mode {
+      --background: #121212;
+      --text-color: #eee;
+      --card-bg: #1e1e1e;
+      --border-color: #333;
+      --shadow: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--background);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      padding: 2rem 1rem;
+      color: white;
+      text-align: center;
+      box-shadow: 0 3px 8px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      display: flex;
+      max-width: 1000px;
+      margin: 2rem auto 3rem;
+      padding: 0 1rem;
+      gap: 2rem;
+      flex-grow: 1;
+    }
+
+    /* Sidebar Table of Contents */
+    nav#toc {
+      flex: 0 0 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem 1.8rem;
+      box-shadow: 0 6px 15px var(--shadow);
+      position: sticky;
+      top: 4.5rem; /* header height + margin */
+      height: fit-content;
+      font-size: 1rem;
+      user-select: none;
+      transition: max-height 0.3s ease;
+      overflow: hidden;
+    }
+
+    nav#toc.collapsed {
+      max-height: 3.5rem;
+      padding-bottom: 0;
+    }
+
+    nav#toc strong {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav#toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    nav#toc li + li {
+      margin-top: 0.8rem;
+    }
+
+    nav#toc a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav#toc a.active,
+    nav#toc a:hover,
+    nav#toc a:focus {
+      color: var(--primary-color);
+      outline: none;
+      font-weight: 700;
+    }
+
+    /* Article content */
+    article {
+      flex: 1 1 auto;
+      background-color: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: 0 8px 20px var(--shadow);
+      padding: 2rem 2.5rem;
+      position: relative;
+    }
+
+    article section {
+      margin-bottom: 2.8rem;
+      scroll-margin-top: 100px;
+      position: relative;
+    }
+
+    article section:last-child {
+      margin-bottom: 0;
+    }
+
+    article h2 {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.4rem;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Copy link icon next to heading */
+    .copy-link {
+      color: var(--primary-color);
+      cursor: pointer;
+      font-size: 1.1rem;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+      user-select: none;
+    }
+    .copy-link:hover {
+      opacity: 1;
+    }
+    .copy-link:focus {
+      outline: 2px solid var(--primary-color);
+      opacity: 1;
+    }
+
+    article p {
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      line-height: 1.75;
+      margin: 0 0 1.2rem;
+    }
+
+    article a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* Back Button */
+    #backBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 1.5rem 1rem 2rem 0;
+      user-select: none;
+      box-shadow: 0 2px 6px var(--shadow);
+      align-self: flex-start;
+      text-decoration: none;
+    }
+
+    #backBtn:hover,
+    #backBtn:focus {
+      background-color: var(--primary-color);
+      color: white;
+      outline: none;
+    }
+
+    #backBtn i {
+      font-size: 1.2rem;
+    }
+
+    /* Dark mode toggle button */
+    #darkModeToggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--primary-color);
+      border: none;
+      color: white;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 15px var(--shadow);
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #darkModeToggle:hover,
+    #darkModeToggle:focus {
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      outline: none;
+    }
+
+    /* Back to top button */
+    #backToTopBtn {
+      position: fixed;
+      bottom: 70px;
+      right: 1.5rem;
+      background: var(--primary-color);
+      border: none;
+      color: white;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 15px var(--shadow);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #backToTopBtn.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #backToTopBtn:hover,
+    #backToTopBtn:focus {
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      outline: none;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        margin: 1rem auto 2rem;
+        padding: 0 1rem;
+      }
+
+      nav#toc {
+        width: 100%;
+        position: relative;
+        top: 0;
+        margin-bottom: 1rem;
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+        padding: 0 1rem;
+        max-height: none !important;
+      }
+
+      nav#toc.collapsed {
+        max-height: 3.5rem;
+        padding-bottom: 0;
+        border-radius: 12px;
+      }
+
+      nav#toc strong {
+        border-bottom: none;
+        margin-bottom: 0.5rem;
+      }
+
+      nav#toc ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        max-height: none;
+        overflow: visible;
+      }
+
+      nav#toc li {
+        margin: 0;
+      }
+
+      nav#toc a {
+        font-weight: 700;
+        font-size: 0.95rem;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px var(--shadow);
+        transition: background-color 0.3s ease;
+      }
+
+      nav#toc a:hover,
+      nav#toc a:focus,
+      nav#toc a.active {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        outline: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Terma & Privasi</h1>
+  </header>
+
+  <main>
+    <nav id="toc" aria-label="Senarai Kandungan" class="collapsed">
+      <strong tabindex="0" aria-expanded="false" aria-controls="tocList" id="tocToggle">
+        Senarai Kandungan
+        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      </strong>
+      <ul id="tocList">
+        <li><a href="#pengenalan">Pengenalan</a></li>
+        <li><a href="#pengumpulan-data">Pengumpulan Data</a></li>
+        <li><a href="#penggunaan-data">Penggunaan Data</a></li>
+        <li><a href="#perkongsian-data">Perkongsian Data</a></li>
+        <li><a href="#keselamatan-data">Keselamatan Data</a></li>
+        <li><a href="#hak-pengguna">Hak Pengguna</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#perubahan-terma">Perubahan Terma</a></li>
+        <li><a href="#hubungi-kami">Hubungi Kami</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      <button id="backBtn" aria-label="Kembali ke Laman Utama">
+        <i class="fa-solid fa-arrow-left"></i> Kembali
+      </button>
+
+      <section id="pengenalan" tabindex="-1">
+        <h2>Pengenalan <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Selamat datang ke laman web Fluff&Co. Terma dan Privasi ini menjelaskan bagaimana kami mengumpul, menggunakan, dan melindungi maklumat peribadi anda semasa anda melawat dan menggunakan laman web kami.</p>
+      </section>
+
+      <section id="pengumpulan-data" tabindex="-1">
+        <h2>Pengumpulan Data <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Kami mengumpul maklumat yang anda berikan secara langsung apabila anda mengisi borang atau berinteraksi dengan laman web kami, seperti nama, emel, dan mesej yang dihantar melalui borang hubungan.</p>
+      </section>
+
+      <section id="penggunaan-data" tabindex="-1">
+        <h2>Penggunaan Data <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Maklumat yang dikumpul digunakan untuk tujuan komunikasi, peningkatan perkhidmatan, dan penghantaran maklumat penting berkaitan dengan laman web ini.</p>
+      </section>
+
+      <section id="perkongsian-data" tabindex="-1">
+        <h2>Perkongsian Data <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Kami tidak akan berkongsi maklumat peribadi anda dengan pihak ketiga tanpa kebenaran anda kecuali jika diwajibkan oleh undang-undang.</p>
+      </section>
+
+      <section id="keselamatan-data" tabindex="-1">
+        <h2>Keselamatan Data <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Kami mengambil langkah-langkah keselamatan yang munasabah untuk melindungi maklumat peribadi anda daripada akses, pengubahsuaian, pendedahan, atau pemusnahan yang tidak dibenarkan.</p>
+      </section>
+
+      <section id="hak-pengguna" tabindex="-1">
+        <h2>Hak Pengguna <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Anda berhak untuk mengakses, membetulkan, atau memadam maklumat peribadi anda yang kami simpan. Anda juga boleh menghubungi kami untuk sebarang permintaan berkaitan data peribadi anda.</p>
+      </section>
+
+      <section id="cookies" tabindex="-1">
+        <h2>Cookies <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Laman web ini menggunakan cookies untuk meningkatkan pengalaman pengguna. Cookies membantu kami memahami bagaimana laman web digunakan dan menyesuaikan kandungan mengikut keperluan pengguna.</p>
+      </section>
+
+      <section id="perubahan-terma" tabindex="-1">
+        <h2>Perubahan Terma <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Kami berhak untuk mengubah terma dan privasi ini pada bila-bila masa. Sebarang perubahan akan dimaklumkan melalui laman web kami.</p>
+      </section>
+
+      <section id="hubungi-kami" tabindex="-1">
+        <h2>Hubungi Kami <span class="copy-link" title="Salin pautan" role="button" tabindex="0"><i class="fa-regular fa-copy"></i></span></h2>
+        <p>Jika anda mempunyai sebarang pertanyaan mengenai Terma & Privasi ini, sila hubungi kami di <a href="mailto:s241572628@studentmail.unimap.edu.my">s241572628@studentmail.unimap.edu.my</a>.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer style="text-align:center; padding: 1rem 0; background: var(--card-bg); color: var(--text-color); border-top: 1px solid var(--border-color); font-size: 0.9rem;">
+    &copy; 2025 Fluff&Co. Semua Hak Terpelihara.
+  </footer>
+
+  <!-- Dark mode toggle button -->
+  <button id="darkModeToggle" aria-label="Toggle mod gelap terang" title="Tukar Mod Gelap/Terang">
+    <i class="fa-regular fa-moon"></i>
+  </button>
+
+  <!-- Back to top button -->
+  <button id="backToTopBtn" aria-label="Kembali ke atas" title="Kembali ke atas">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Dark mode toggle & save preference
+    const darkToggleBtn = document.getElementById('darkModeToggle');
+    function updateDarkToggleIcon() {
+      if (document.body.classList.contains('dark-mode')) {
+        darkToggleBtn.innerHTML = '<i class="fa-regular fa-sun"></i>';
+      } else {
+        darkToggleBtn.innerHTML = '<i class="fa-regular fa-moon"></i>';
+      }
+    }
+    darkToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      updateDarkToggleIcon();
+      localStorage.setItem('fluff_darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    // Load preference from localStorage
+    if (localStorage.getItem('fluff_darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+    updateDarkToggleIcon();
+
+    // TOC collapse toggle on small screen
+    const toc = document.getElementById('toc');
+    const tocToggle = document.getElementById('tocToggle');
+    const tocList = document.getElementById('tocList');
+
+    function setTocAria(expanded) {
+      tocToggle.setAttribute('aria-expanded', expanded);
+      if (expanded) {
+        toc.classList.remove('collapsed');
+      } else {
+        toc.classList.add('collapsed');
+      }
+    }
+
+    tocToggle.addEventListener('click', () => {
+      const isCollapsed = toc.classList.contains('collapsed');
+      setTocAria(isCollapsed);
+    });
+    // Keyboard accessible toggle (Enter or Space)
+    tocToggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isCollapsed = toc.classList.contains('collapsed');
+        setTocAria(isCollapsed);
+      }
+    });
+
+    // Highlight active TOC link on scroll (Scroll Spy)
+    const sections = document.querySelectorAll('article section');
+    const tocLinks = toc.querySelectorAll('a');
+
+    function throttle(fn, wait) {
+      let time = Date.now();
+      return function () {
+        if ((time + wait - Date.now()) < 0) {
+          fn();
+          time = Date.now();
+        }
+      };
+    }
+
+    function onScrollSpy() {
+      let currentId = '';
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) {
+          currentId = section.id;
+        }
+      });
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentId) {
+          link.classList.add('active');
+          // For mobile view, you might want to auto-collapse TOC
+        }
+      });
+    }
+
+    window.addEventListener('scroll', throttle(onScrollSpy, 100));
+    onScrollSpy();
+
+    // Smooth scroll & focus when clicking TOC links
+    tocLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.focus();
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Back button to previous page
+    document.getElementById('backBtn').addEventListener('click', () => {
+      history.back();
+    });
+
+    // Copy link icon functionality
+    const copyLinks = document.querySelectorAll('.copy-link');
+    copyLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const section = link.closest('section');
+        if (!section) return;
+        const url = window.location.origin + window.location.pathname + '#' + section.id;
+        navigator.clipboard.writeText(url).then(() => {
+          link.title = 'Disalin!';
+          setTimeout(() => (link.title = 'Salin pautan'), 1500);
+        });
+      });
+      link.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          link.click();
+        }
+      });
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

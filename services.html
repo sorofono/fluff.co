@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services - Fluff&Co</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- FontAwesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme')
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+    })();
+  </script>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Primary navigation">
+      <div class="logo">Fluff&Co</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button id="darkToggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="content" role="main" aria-label="Our Services">
+    <section class="intro fade-in">
+      <h1>Our Services</h1>
+      <p>We provide top-notch digital marketing services designed to grow your brand and maximize ROI.</p>
+    </section>
+
+    <section class="services-list fade-in delay-1" aria-label="List of Services">
+      <div class="service-item">
+        <h2>Search Engine Optimization (SEO)</h2>
+        <p>Boost your website's visibility on search engines through expert keyword strategies and on-page optimizations.</p>
+      </div>
+      <div class="service-item">
+        <h2>Content Marketing</h2>
+        <p>Create compelling content that resonates with your audience and drives engagement across all platforms.</p>
+      </div>
+      <div class="service-item">
+        <h2>Social Media Management</h2>
+        <p>Manage your social profiles with targeted campaigns to increase followers, engagement, and conversions.</p>
+      </div>
+      <div class="service-item">
+        <h2>Pay-Per-Click Advertising (PPC)</h2>
+        <p>Maximize your ad spend with data-driven PPC campaigns that deliver measurable results.</p>
+      </div>
+    </section>
+
+    <a href="index.html" class="back-home" aria-label="Back to Home">← Back to Home</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Fluff&Co. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const darkToggle = document.getElementById('darkToggle');
+
+    darkToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      const isDark = document.documentElement.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      darkToggle.innerHTML = isDark
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
+    });
+
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-mode');
+        darkToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+      } else {
+        darkToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+      }
+    })();
+
+    // Fade in elements on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    function handleFade() {
+      fadeEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+          el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        }
+      });
+    }
+    window.addEventListener('scroll', handleFade);
+    window.addEventListener('load', handleFade);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Fluff&Co</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme')
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+    })();
+  </script>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Primary navigation">
+      <div class="logo">Fluff&Co</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button id="darkToggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="content" role="main" aria-label="About Fluff&Co">
+    <!-- Intro -->
+    <section class="intro fade-in">
+      <h1>About Fluff&Co</h1>
+      <p>At Fluff&Co, we're a passionate digital marketing agency that thrives on creativity, strategy, and data-driven success. We partner with brands to elevate their presence and drive meaningful results.</p>
+      
+      <div class="key-metrics">
+        <div><strong>200+</strong> campaigns launched</div>
+        <div><strong>50%</strong> average engagement boost</div>
+        <div><strong>30+</strong> industry awards</div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values fade-in delay-1" aria-label="Our Core Values">
+      <h2>Our Core Values</h2>
+      <ul>
+        <li><strong>Innovation:</strong> Pushing creative boundaries.</li>
+        <li><strong>Integrity:</strong> Transparent, value-driven work.</li>
+        <li><strong>Collaboration:</strong> Teamwork with clients.</li>
+        <li><strong>Results:</strong> Data to fuel decisions.</li>
+      </ul>
+    </section>
+
+    <!-- Team Section with Photos & Achievements -->
+   <section class="team-section fade-in delay-2" aria-label="Meet the Fluff&Co team">
+  <h2>Meet Our Team</h2>
+
+  <!-- Leader Card Centered -->
+ <div class="team-leader">
+  <div class="team-card leader-card animate-in" tabindex="0">
+    <img src="images/nana.jpg" alt="Nur Sorfina">
+    <div class="card-content">
+      <h3>Nur Sorfina 
+        <span class="badge" aria-label="Team Leader">⭐ Team Leader</span>
+      </h3>
+      <p class="role">Team Leader</p>
+      <ul class="achievements">
+        <li>Led award-winning "BrandX" campaign (+70% ROI)</li>
+        <li>10+ years in strategy and innovation</li>
+        <li>Speaker at Global Marketing Summit 2024</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <!-- First Row Below Leader -->
+  <div class="team-row">
+    <div class="team-card" tabindex="0">
+      <img src="images/dinie.jpg" alt="Nurdinie-Content Strategist">
+      <div class="card-content">
+        <h3>Nurdinie</h3>
+        <p class="role">Content Strategist</p>
+        <p>Crafts compelling brand stories using audience insights and content trends.</p>
+      </div>
+    </div>
+
+    <div class="team-card" tabindex="0">
+      <img src="images/wan.jpg" alt="Nur Sorfina">
+      <div class="card-content">
+        <h3>Wan Balqis</h3>
+        <p class="role">SEO Specialist</p>
+        <p>Boosts organic rankings with cutting-edge keyword strategies and link building.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Row -->
+  <div class="team-row">
+    <div class="team-card" tabindex="0">
+       <img src="images/nik.jpg" alt="Nurul Nabilah">
+      <div class="card-content">
+        <h3>Nurul Nabilah</h3>
+        <p class="role">Social Media Manager</p>
+        <p>Creates vibrant campaigns that build brand loyalty and engagement.</p>
+      </div>
+    </div>
+
+    <div class="team-card" tabindex="0">
+      <img src="images/nif.jpg" alt="Hanif - Data Analyst">
+      <div class="card-content">
+        <h3>Hanif</h3>
+        <p class="role">Data Analyst</p>
+        <p>Delivers actionable insights using analytics tools to optimize strategy and ROI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Company Timeline -->
+    <section class="timeline fade-in delay-3" aria-label="Company History Timeline">
+      <h2>Our Journey</h2>
+      <div class="timeline-item"><h3>2018 – Founded</h3><p>Established with a mission to revolutionize digital marketing.</p></div>
+      <div class="timeline-item"><h3>2019 – First Major Campaign</h3><p>Launched campaign delivering 40% higher engagement.</p></div>
+      <div class="timeline-item"><h3>2021 – Expanded Services</h3><p>Introduced SEO, Social Media Management & Analytics.</p></div>
+      <div class="timeline-item"><h3>2023 – Industry Recognition</h3><p>Won 5 international awards for campaign innovation.</p></div>
+      <div class="timeline-item"><h3>2025 – New Office Launch</h3><p>Opened our new Kuala Lumpur creative hub.</p></div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="vision-mission fade-in delay-4" aria-label="Vision and Mission statements">
+      <h2>Vision &amp; Mission</h2>
+      <p><strong>Vision:</strong> To be Asia’s leading agency for creative digital experiences.</p>
+      <p><strong>Mission:</strong> Empower brands with inventive strategies, analytical insights, and exceptional client care.</p>
+    </section>
+
+    <a href="index.html" class="back-home" aria-label="Back to Home">← Back to Home</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Fluff&Co. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('darkToggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+    const fadeEls = document.querySelectorAll('.fade-in');
+    function handleFade() {
+      fadeEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+          el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        }
+      });
+    }
+    window.addEventListener('scroll', handleFade);
+    window.addEventListener('load', handleFade);
+  </script>
+
+</body>
+</html> 
